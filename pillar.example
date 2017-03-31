@@ -1,0 +1,11 @@
+teamspeak:
+  directory: /home/teamspeak/ts3server
+
+  install_master: false
+  install_dns: true
+
+  ini_options:
+    serveradmin_password: xxx
+
+  tsdns_ini_options:
+    test.ts.com=127.0.0.1:8080

@@ -1,0 +1,17 @@
+teamspeak:
+  directory: /usr/local/ts3server
+
+  user: teamspeak
+  group: teamspeak
+
+  archive: http://dl.4players.de/ts/releases/3.0.13.4/teamspeak3-server_freebsd_amd64-3.0.13.4.tar.bz2
+
+  executable: ts3server
+  ini_options: {}
+
+  enable_master: false
+  master_executable: master
+
+  enable_dns: false
+  dns_executable: tsdns
+  tsdns_ini_options: {}

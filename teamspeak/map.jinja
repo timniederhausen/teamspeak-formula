@@ -1,0 +1,9 @@
+{% import_yaml 'teamspeak/defaults.yaml' as defaults %}
+
+{# merge the pillar:lookup dict into the defaults/os specific dict #}
+{% set lookup = salt['pillar.get']('teamspeak:lookup',
+                                   default=defaults.teamspeak,
+                                   merge=True) %}
+
+{# merge the actual teamspeak pillar into the above combined dict #}
+{% set teamspeak = salt['pillar.get']('teamspeak', default=lookup, merge=True) %}
