@@ -30,6 +30,8 @@ start_precmd="teamspeak_precmd"
 
 teamspeak_precmd()
 {
+    load_kld aio
+
     install -o ${teamspeak_user} /dev/null ${pidfile}
 
     export PATH="${PATH}:/usr/local/bin:/usr/local/sbin"
