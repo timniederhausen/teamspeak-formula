@@ -35,7 +35,7 @@ teamspeak_precmd()
     install -o ${teamspeak_user} /dev/null ${pidfile}
 
     export PATH="${PATH}:/usr/local/bin:/usr/local/sbin"
-    export LD_LIBRARY_PATH="${teamspeak_directory}:${LD_LIBRARY_PATH}"
+    export LD_LIBRARY_PATH="${teamspeak_directory}:/usr/local/lib/mariadb:${LD_LIBRARY_PATH}"
     cd ${teamspeak_directory}
 }
 
