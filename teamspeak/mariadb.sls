@@ -1,6 +1,8 @@
+{% from 'teamspeak/map.jinja' import teamspeak with context %}
+
 mariadb_package:
   pkg.installed:
-    - name: mariadb101-client
+    - name: mariadbconnector-c
 
 teamspeak_mariadb_ini:
   file.managed:
@@ -10,6 +12,7 @@ teamspeak_mariadb_ini:
     - mode: 640
     - defaults:
         options: {{ teamspeak.mariadb_options | yaml }}
+        section: config
     - require:
       - cmd: teamspeak_archive
       - pkg: mariadb_package
