@@ -8,7 +8,7 @@ teamspeak_dns_init_script:
     - mode: 755
     - defaults:
         directory: {{ teamspeak.directory }}/tsdns
-        user: {{ teamspeak.user | yaml_encode }}
+        user: root
         executable: {{ teamspeak.dns_executable | yaml_encode }}
     - require:
       - cmd: teamspeak_archive
@@ -20,7 +20,7 @@ teamspeak_tsdns_ini:
     - template: jinja
     - mode: 640
     - defaults:
-        options: {{ teamspeak.tsdns_ini_options | yaml_encode }}
+        options: {{ teamspeak.tsdns_ini_options | yaml }}
 
 teamspeak_dns_service:
   service.running:
