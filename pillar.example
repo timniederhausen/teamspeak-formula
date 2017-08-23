@@ -3,6 +3,29 @@ teamspeak:
 
   install_master: false
   install_dns: true
+  import_sqlitedb: false
+
+  license: |
+    Company name : XXX
+    address      : XXX
+    address2     : XXX
+    zipcode      : XXX
+    city         : XXX
+    country      : XXX
+    phone        : XXX
+    fax          : XXX
+    sales contact: XXX
+    tech contact : XXX
+
+    type         : XXX
+    start date   : XXX
+    end date     : XXX
+    max. virtual servers: XXX
+    max. slots   : XXX
+    description  : XXX
+
+    ==key==
+    XXX
 
   ini_options:
     serveradmin_password: xxx

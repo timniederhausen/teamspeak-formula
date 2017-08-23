@@ -16,3 +16,5 @@ teamspeak:
   enable_dns: false
   dns_executable: tsdns
   tsdns_ini_options: {}
+
+  import_sqlitedb: false

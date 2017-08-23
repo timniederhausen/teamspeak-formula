@@ -45,6 +45,24 @@ teamspeak_ini:
     - require:
       - cmd: teamspeak_archive
 
+{% if teamspeak.license %}
+teamspeak_license:
+    file.managed:
+      - name: {{ teamspeak.directory }}/licensekey.dat
+      - mode: 600
+      - contents_pillar: teamspeak:license
+{% endif %}
+
+{% if teamspeak.import_sqlitedb %}
+teamspeak_sqlitedb:
+  file.managed:
+    - name: {{ teamspeak.directory }}/ts3server.sqlitedb
+    - source: salt://teamspeak/files/ts3server.sqlitedb
+    - mode: 640
+    - require:
+        - cmd: teamspeak_archive
+{% endif %}
+
 {% if grains.os_family == 'FreeBSD' %}
 teamspeak_init_script:
   file.managed:
@@ -70,10 +88,12 @@ teamspeak_service:
 {% endif %}
 {% endif %}
 
+{% if teamspeak.enable_master or teamspeak.enable_dns %}
 include:
 {% if teamspeak.enable_master %}
   - teamspeak.master
 {% endif %}
 {% if teamspeak.enable_dns %}
   - teamspeak.dns
+{% endif %}
 {% endif %}
