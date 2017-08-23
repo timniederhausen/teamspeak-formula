@@ -1,5 +1,4 @@
 {% from 'teamspeak/map.jinja' import teamspeak with context %}
-{% from 'teamspeak/macros.jinja' import sls_block with context %}
 
 teamspeak_user:
   user.present:
@@ -25,7 +24,8 @@ teamspeak_archive:
     - group: {{ teamspeak.group }}
     - require:
       - file: teamspeak_directory
-    {{ sls_block(teamspeak.archive) | indent(4) }}
+    - source: {{ teamspeak.archive | yaml_encode }}
+    - source_hash: {{ teamspeak.archive_hash }}
 
   cmd.run:
     - name: tar xf archive.tgz --strip-components=1
