@@ -88,7 +88,7 @@ teamspeak_service:
 {% endif %}
 {% else %}
 {% if grains['systemd'] %}
-teamspeak_service:
+teamspeak_service_config:
   file.managed:
     - name: /etc/systemd/system/teamspeak.service
     - source: salt://teamspeak/files/teamspeak.service
