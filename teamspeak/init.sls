@@ -86,6 +86,32 @@ teamspeak_service:
 {% if teamspeak.enable_master %}
       - service: teamspeak_master_service
 {% endif %}
+{% else %}
+{% if grains['systemd'] %}
+teamspeak_service:
+  file.managed:
+    - name: /etc/systemd/system/teamspeak.service
+    - source: salt://teamspeak/files/teamspeak.service
+    - template: jinja
+    - mode: 755
+    - defaults:
+        directory: {{ teamspeak.directory | yaml_encode }}
+        user: {{ teamspeak.user | yaml_encode }}
+        group: {{ teamspeak.group | yaml_encode }}
+        executable: {{ teamspeak.executable | yaml_encode }}
+    - require:
+      - file: teamspeak_ini
+
+teamspeak_service:
+  service.running:
+    - name: teamspeak
+    - enable: true
+    - require:
+      - cmd: teamspeak_archive
+{% if teamspeak.enable_master %}
+      - service: teamspeak_master_service
+{% endif %}
+{% endif %}
 {% endif %}
 
 {% if teamspeak.enable_master or teamspeak.enable_dns %}
