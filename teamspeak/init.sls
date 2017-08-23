@@ -49,6 +49,8 @@ teamspeak_ini:
 teamspeak_license:
     file.managed:
       - name: {{ teamspeak.directory }}/licensekey.dat
+      - user: {{ teamspeak.user }}
+      - group: {{ teamspeak.group }}
       - mode: 600
       - contents_pillar: teamspeak:license
 {% endif %}
@@ -57,6 +59,8 @@ teamspeak_license:
 teamspeak_sqlitedb:
   file.managed:
     - name: {{ teamspeak.directory }}/ts3server.sqlitedb
+    - user: {{ teamspeak.user }}
+    - group: {{ teamspeak.group }}
     - source: salt://teamspeak/files/ts3server.sqlitedb
     - mode: 640
     - require:
