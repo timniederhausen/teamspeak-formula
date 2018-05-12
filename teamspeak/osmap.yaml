@@ -1,0 +1,4 @@
+FreeBSD:
+  archive:
+    source: http://dl.4players.de/ts/releases/3.0.13.8/teamspeak3-server_freebsd_amd64-3.0.13.8.tar.bz2
+    source_hash:
