@@ -45,7 +45,7 @@ teamspeak_ini:
     - require:
       - cmd: teamspeak_archive
 
-{% if teamspeak.license %}
+{% if teamspeak.license is defined %}
 teamspeak_license:
     file.managed:
       - name: {{ teamspeak.directory }}/licensekey.dat
