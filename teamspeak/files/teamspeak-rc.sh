@@ -24,7 +24,7 @@ required_dirs=${teamspeak_directory}
 pidfile=${teamspeak_directory}/ts3server.pid
 procname=${teamspeak_directory}/{{ executable }}
 command=/usr/sbin/daemon
-command_args="-p ${pidfile} -f ${procname} ${teamspeak_options}"
+command_args="-p ${pidfile} -f ${procname} ${teamspeak_options} license_accepted=1"
 
 start_precmd="teamspeak_precmd"
 

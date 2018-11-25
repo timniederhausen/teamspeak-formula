@@ -7,7 +7,7 @@ User={{ user }}
 Group={{ group }}
 Type=forking
 WorkingDirectory={{ directory }}
-ExecStart={{ directory }}/ts3server_startscript.sh start
+ExecStart={{ directory }}/ts3server_startscript.sh start license_accepted=1
 ExecStop={{ directory }}/ts3server_startscript.sh stop
 PIDFile={{ directory }}/ts3server.pid
 RestartSec=15
