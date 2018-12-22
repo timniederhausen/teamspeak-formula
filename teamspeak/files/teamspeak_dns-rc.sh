@@ -17,7 +17,7 @@ load_rc_config teamspeak_dns
 : ${teamspeak_dns_enable:="NO"}
 : ${teamspeak_dns_directory:={{ directory }}}
 : ${teamspeak_dns_user:={{ user }}}
-: ${teamspeak_dns_options:=""}
+: ${teamspeak_dns_options:="--log-stderr=0"}
 
 required_dirs=${teamspeak_dns_directory}
 
