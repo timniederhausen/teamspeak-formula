@@ -1,11 +1,17 @@
 {% from 'teamspeak/map.jinja' import teamspeak with context %}
 
 {% if grains.os_family == 'FreeBSD' %}
-# TODO: make this more dynamic
 mariadb_package:
   pkg.installed:
-    - sources:
-      - 'mariadbconnector-c': http://pkg.freebsd.org/FreeBSD:11:amd64/release_1/All/mariadbconnector-c-2.3.2.txz
+    - name: mariadb-connector-c
+
+/usr/local/lib/mariadb/libmariadb.so.2:
+  file.symlink:
+    - target: /usr/local/lib/mariadb/libmariadb.so.3
+    - require:
+      - mariadb_package
+    - require_in:
+      - teamspeak_mariadb_ini
 {% endif %}
 
 teamspeak_mariadb_ini:
